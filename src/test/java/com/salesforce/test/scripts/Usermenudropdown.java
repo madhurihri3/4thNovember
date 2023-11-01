@@ -5,6 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 
 import com.salesforce.tests.Base.Basetest;
 
@@ -43,22 +44,38 @@ public class Usermenudropdown extends Basetest {
         clickElement(saveButton,"save button");
         Thread.sleep(2000);
         driver.switchTo().defaultContent();
-        
-        
-        
+        WebElement title= driver.findElement(By.xpath("//*[@id=\"tailBreadcrumbNode\"]"));
+        String originalString=title.getText();
+        String updatedString=originalString.replaceAll("\\s+$","");
+        //Assert.assertEquals(login,updatedString);
+        WebElement postButton= driver.findElement(By.cssSelector("#publisherAttachTextPost > span:nth-child(2)"));
+        waitForVisibility(postButton,50,"post button");
+        clickElement(postButton,"post button");
+        Thread.sleep(3000);
+       
+        WebElement postframe= driver.findElement(By.cssSelector(".cke_wysiwyg_frame"));
+        driver.switchTo().frame(postframe);
+        WebElement textArea= driver.findElement(By.cssSelector("body"));
+        Thread.sleep(3000);
+        waitForVisibility(textArea,130,"Text Area");
+        clickElement(textArea,"Text Area");
+        textArea.sendKeys("I am entering some Text in Post Area");
+        driver.switchTo().defaultContent();
+        Thread.sleep(3000);
+        WebElement shareButton= driver.findElement(By.cssSelector("#publishersharebutton"));
+        clickElement(shareButton,"Share Button");
+        WebElement textEnter= driver.findElement(By.cssSelector("body"));
+               
         WebElement uploadPicEle = driver.findElement(By.id("photoSection"));
-    	//Actions action = new Actions(driver);
-    	Basetest base1 = new Basetest();
+       	Basetest base1 = new Basetest();
         base1.performActionOnElement(driver, uploadPicEle, "Upload pic link displayed");
         Thread.sleep(5000);
     	//action.moveToElement(uploadPicEle).build().perform();
-    	
-    	WebElement updatePicEle = driver.findElement(By.id("uploadLink"));
+       	WebElement updatePicEle = driver.findElement(By.id("uploadLink"));
     	clickElement(updatePicEle,"update pic");
     	
     	Thread.sleep(2000);
     	
-
     	WebElement uploadProfilePhotoFrameEle = driver.findElement(By.xpath("//*[@id=\"uploadP"));
     	driver.switchTo().frame(uploadProfilePhotoFrameEle);
     	
@@ -71,6 +88,7 @@ public class Usermenudropdown extends Basetest {
     	WebElement saveButtonEle1 = driver.findElement(By.id("j_id0:uploadFileForm:save"));
     	clickElement(saveButtonEle1,"upload File");
     	System.out.println("Profile Picture Updated");
+    	driver.switchTo().defaultContent();
     	WebElement postLinkEle = driver.findElement(By.id("publisherAttachTextPost"));
     	clickElement(postLinkEle,"Post Link");
     	Thread.sleep(2000);

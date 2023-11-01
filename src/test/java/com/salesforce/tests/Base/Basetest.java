@@ -26,14 +26,17 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
+import com.automation.tests.utilities.PropertiesUtility;
+
 //import com.automation.tests.utilities.PropertiesUtility;
 
 public class Basetest {
 	 protected static WebDriver driver=null;
 	   static WebDriverWait wait=null;
 	   
-		/*
-		@Parameters("browsername")
+	   
+		
+		/*@Parameters("browsername")
 		public static void setUpBeforeTestMethod(@Optional("firefox") String browser_name) {
 			PropertiesUtility pro=new PropertiesUtility();
 			Properties applicationProFile=pro.loadFile("applicationData.properties");
@@ -321,11 +324,7 @@ public class Basetest {
 	    	            clickLogout.click();
 	    	            System.out.println("Logout is clicked");
 	    	        }
-	        	       /* public static void moveToElementAction(WebElement ele,String objName) {
-	        	    		Actions action=new Actions(driver);
-	        	    		action.moveToElement(ele).build().perform();
-	        	    		System.out.println("cursor moved to Web element "+objName);
-	        	    		}*/
+	        	       
 	    	    }
 
 

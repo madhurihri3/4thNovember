@@ -12,6 +12,7 @@ public class CreateAccounts extends Basetest{
 		// TODO Auto-generated method stub
 		login_to_SalesForce();
 		Thread.sleep(5000);
+		//create new Account
 		WebElement AccountsTab = driver.findElement(By.cssSelector("#Account_Tab > a:nth-child(1)"));
 		clickElement(AccountsTab,"Accounts Tab");
 		System.out.println("Clicked on Accounts Tab");
@@ -33,8 +34,9 @@ public class CreateAccounts extends Basetest{
 		WebElement SaveBtn=driver.findElement(By.cssSelector("#bottomButtonRow > input:nth-child(1)"));
 		clickElement(SaveBtn,"Save");
 		System.out.println("New Account is created: TestCase-10 Passed");
-		
+		driver.switchTo().defaultContent();
 		//CreateNewViewlink();//testcase-11
+		
 		//EditView();//testcase-12
 		//Merge_Accounts();testcase-13
 		//Create_Acc_Reports();//testcase-14
