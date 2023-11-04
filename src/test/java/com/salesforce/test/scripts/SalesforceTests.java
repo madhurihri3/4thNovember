@@ -55,7 +55,7 @@ public class SalesforceTests extends Basetest {
     
     //TestCase -2-Login with correct username and Pwd and Chk whether the homepage is displayed or not
     
-  /*  public static void CheckHomePageDisplay() throws InterruptedException {
+    public static void CheckHomePageDisplay() throws InterruptedException {
 		
 		//enter username
 		WebElement usernameEle = driver.findElement(By.id("username"));
@@ -72,7 +72,7 @@ public class SalesforceTests extends Basetest {
 		Thread.sleep(5000);
 		closeBrowser();
 		System.out.println("******login_to_Salesforce automation script ended***********");
-	}*/
+	}
     
     //TestCase-3-Check RememberMe
     

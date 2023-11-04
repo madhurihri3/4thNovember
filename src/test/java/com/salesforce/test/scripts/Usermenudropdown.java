@@ -65,14 +65,26 @@ public class Usermenudropdown extends Basetest {
         WebElement shareButton= driver.findElement(By.cssSelector("#publishersharebutton"));
         clickElement(shareButton,"Share Button");
         WebElement textEnter= driver.findElement(By.cssSelector("body"));
-               
-        WebElement uploadPicEle = driver.findElement(By.id("photoSection"));
-       	Basetest base1 = new Basetest();
-        base1.performActionOnElement(driver, uploadPicEle, "Upload pic link displayed");
+        Thread.sleep(2000);
+        WebElement File = driver.findElement(By.cssSelector("#publisherAttachContentPost > span:nth-child(2)"));
+        clickElement(File,"file");
+        Thread.sleep(2000);
+        WebElement Fileframe=driver.findElement(By.xpath("/html/body/div[1]/div[2]/table/tbody/tr/td/div/div[3]/div[1]/div/div[1]/div/div[2]/ul/li[1]/div/div/div[1]/div[1]/div[2]/div[2]/div/div[2]/div[2]/div/div/iframe"));
+        driver.switchTo().frame(Fileframe);
+        WebElement uploadFile = driver.findElement(By.cssSelector("#chatterUploadFileAction"));
+        clickElement(uploadFile,"Upload file");
+        //Navigatetopreviouspage
+        //chooseFileToUpload(driver, "");
+
+        uploadFile.sendKeys("C:\\Users\\cvnpr\\OneDrive\\Desktop\\Example.txt");
         Thread.sleep(5000);
+       // WebElement uploadPicEle = driver.findElement(By.id("photoSection"));
+       //	Basetest base1 = new Basetest();
+        //base1.performActionOnElement(driver, uploadPicEle, "Upload pic link displayed");
+       // Thread.sleep(5000);
     	//action.moveToElement(uploadPicEle).build().perform();
-       	WebElement updatePicEle = driver.findElement(By.id("uploadLink"));
-    	clickElement(updatePicEle,"update pic");
+       //	WebElement updatePicEle = driver.findElement(By.id("uploadLink"));
+    	//clickElement(updatePicEle,"update pic");
     	
     	Thread.sleep(2000);
     	
@@ -112,6 +124,7 @@ public class Usermenudropdown extends Basetest {
         clickElement(clickSettings,"My Settings");
         System.out.println("My Settings Window is opened ");
         Thread.sleep(5000);
+
         WebElement clickPersonal= driver.findElement(By.cssSelector("#PersonalInfo_font"));
         clickElement(clickPersonal,"Personal");
         System.out.println("Personal link is clicked ");
@@ -126,6 +139,7 @@ public class Usermenudropdown extends Basetest {
         		+ "");
         
         WebElement clickDisplayLayout= driver.findElement(By.id("DisplayAndLayout_font"));
+        //String dropdownChat
         clickElement(clickDisplayLayout,"DisplayAndLayout");
         System.out.println("Display and Layout link is clicked ");
         Thread.sleep(5000);
@@ -144,6 +158,7 @@ public class Usermenudropdown extends Basetest {
         WebElement clickDevelop= driver.findElement(By.cssSelector("#userNav-menuItems > a:nth-child(3)"));
         clickElement(clickDevelop,"Developers console");
         System.out.println("Developers Console window is opened ");
+        //getdriver.currentWindow
         Thread.sleep(5000);
         closeBrowser();
         Thread.sleep(5000);

@@ -13,21 +13,19 @@ public class CreateAccounts extends Basetest{
 		login_to_SalesForce();
 		Thread.sleep(5000);
 		//create new Account
-		WebElement AccountsTab = driver.findElement(By.cssSelector("#Account_Tab > a:nth-child(1)"));
+		WebElement AccountsTab = driver.findElement(By.id("Account_Tab"));
 		clickElement(AccountsTab,"Accounts Tab");
 		System.out.println("Clicked on Accounts Tab");
 		WebElement New = driver.findElement(By.xpath("//input[@name='new']"));
 		clickElement(New,"New Button");
 		System.out.println("Clicked on new Tab");
-		
-		WebElement AccountNameEle= driver.findElement(By.id("acc2"));
-		enterText(AccountNameEle,"Kamala","Account Name");
-		WebElement dropdowntypeEle= driver.findElement(By.id("acc6"));
-		clickElement(dropdowntypeEle,"Type dropdown");
-        Thread.sleep(5000);
+		Thread.sleep(2000);
+		WebElement AccountNameEle= driver.findElement(By.id(""));
+		enterText(AccountNameEle,"Radha","Account Name");
+		Thread.sleep(5000);
         System.out.println("Test Case Passed-Dropdown Menu is displayed");
-    //Testcase-10
-        selectDropdownOption(dropdowntypeEle,"Technology Partner");
+        WebElement type=(driver.findElement(By.id("acc6")));
+        selectDropdownOption(type,"Technology Partner");
 		WebElement custPriority= driver.findElement(By.id("00NHs00000S6Gtr"));
 		clickElement(custPriority,"Priority");
 		selectDropdownOption(custPriority,"High");
@@ -36,11 +34,34 @@ public class CreateAccounts extends Basetest{
 		System.out.println("New Account is created: TestCase-10 Passed");
 		driver.switchTo().defaultContent();
 		//CreateNewViewlink();//testcase-11
-		
+		WebElement CreateNewviewlink = driver.findElement(By.cssSelector(".fFooter > a:nth-child(2)"));
+		clickElement(CreateNewviewlink,"Accounts Tab");
+		System.out.println("Clicked on Newview link");
+		Thread.sleep(2000);
+		WebElement viewName = driver.findElement(By.xpath("//*[@id=\"fname\"]"));
+		enterText(viewName,"Parrot","ViewName");
+		WebElement viewUniqueName= driver.findElement(By.xpath("//*[@id=\"devname\"]"));
+		enterText(viewUniqueName,"Bird","viewUnique");
+		WebElement SaveNewBtn=driver.findElement(By.cssSelector(""
+				+ ""));
+		clickElement(SaveNewBtn,"SaveNew");
+		Thread.sleep(2000);
+		System.out.println("New ViewAccount is created: TestCase-11 Passed");
+		driver.switchTo().defaultContent();
 		//EditView();//testcase-12
+		
 		//Merge_Accounts();testcase-13
 		//Create_Acc_Reports();//testcase-14
-		closeBrowser();
+		WebElement AccLastActivity = driver.findElement(By.cssSelector(".hover > a:nth-child(1)"));
+		clickElement(AccLastActivity,"Account last activity<");
+		System.out.println("Clicked on Accounts last activity link");
+		Thread.sleep(2000);
+		WebElement popUpFrameEle = driver.findElement(By.cssSelector("#ext-gen187"));
+    	waitForVisibility(popUpFrameEle,5,2,"popup Frame");
+        switchToFrame(driver,popUpFrameEle,"PopupFrame");
+    	WebElement NoThksBtn = driver.findElement(By.id("ext-comp-1107"));
+    	clickElement(NoThksBtn,"No Thanks Button");
+    	closeBrowser();
 		System.out.println("********UserMenu automation script ended***********");
 
 

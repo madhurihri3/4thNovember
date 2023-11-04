@@ -26,7 +26,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 
-import com.automation.tests.utilities.PropertiesUtility;
+//import com.automation.tests.utilities.PropertiesUtility;
 
 //import com.automation.tests.utilities.PropertiesUtility;
 
@@ -64,6 +64,7 @@ public class Basetest {
 			}
 		}
 		
+
 	    		public static void goToUrl(String url) {
 	    			driver.get(url);
 	    			System.out.println(url+ "is entered");
@@ -92,6 +93,10 @@ public class Basetest {
 	    			driver.close();
 	    			System.out.println("browser closed");
 	    			//System.out.println("******invalid_login_to_Salesforce automation script ended***********");
+	    		}
+	    		public static void quitBrowser() {
+	    			driver.quit();
+	    			System.out.println("browser closed");
 	    		}
 	    		// Teardown method
 	    	  
@@ -326,7 +331,10 @@ public class Basetest {
 	    	        }
 	        	       
 	    	    }
-
+	    	    private static void chooseFileToUpload(WebDriver driver, String filePath) {
+	    	        WebElement chooseFileButton = driver.findElement(By.id("chooseFileButtonId"));
+	    	        chooseFileButton.sendKeys(filePath);
+	    	    }
 
 	    	    
 
