@@ -22,6 +22,7 @@ public class Usermenudropdown extends Basetest {
         Thread.sleep(5000);
         clickElement(menubutton,"menu button");
         System.out.println("Test Case Passed-Dropdown Menu is displayed");
+        
         WebElement profile = driver.findElement(By.linkText("My Profile"));
 		waitForVisibility(profile,50,"My Profile");
 		//Thread.sleep(5000);

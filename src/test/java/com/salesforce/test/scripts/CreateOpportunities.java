@@ -3,6 +3,7 @@ package com.salesforce.test.scripts;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import com.salesforce.tests.Base.Basetest;
@@ -17,23 +18,35 @@ public class CreateOpportunities extends Basetest{
 		//display opportunities
 		WebElement OpportunitiesTab = driver.findElement(By.cssSelector("#Opportunity_Tab > a:nth-child(1)"));
 		clickElement(OpportunitiesTab,"Opportunities Tab");
+		Thread.sleep(2000);
+		
+		WebElement popupwindow = driver.findElement(By.xpath("//a[@id='tryLexDialogX']"));
+		clickElement(popupwindow,"Popupwindow");
+		Select dropdownOpp=new Select(driver.findElement(By.xpath("//select[@id='fcf']")));
+		Thread.sleep(2000);
+		
 		System.out.println("Clicked on Opportunities and dropdown is displayed");
-		System.out.println("OpportunitiesPage is displayed:TestCase 15 Passed");
+		System.out.println("TestCase 15 Completed");
+		
+		//TestCase-16
 		WebElement New = driver.findElement(By.cssSelector(".pbButton > input:nth-child(1)"));
 		clickElement(New,"New Button");
 		System.out.println("Clicked on new Button");
 		Thread.sleep(2000);
 		WebElement OpportunityNameEle= driver.findElement(By.id("opp3"));
-		enterText(OpportunityNameEle,"Golden","Opportunitity Name");
+		clearElement(OpportunityNameEle,"Opportunity Name");
+		enterText(OpportunityNameEle,"Good","Opportunitity Name");
 		WebElement AccountNameEle= driver.findElement(By.id("opp4"));
+		clearElement(AccountNameEle,"AccountNameEle");
 		enterText(AccountNameEle,"Ganga","Account Name");
         Thread.sleep(2000);
-        //closedate
+        
         WebElement ClickStage= driver.findElement(By.id("opp11"));
         clickElement(ClickStage,"Stage option");
         selectDropdownOption(ClickStage,"Qualification");
         Thread.sleep(2000);
         WebElement ProbabilityEle= driver.findElement(By.id("opp12"));
+        clearElement(ProbabilityEle,"Probability Element");
 		enterText(ProbabilityEle,"5","Probability");
 		Thread.sleep(2000);
         WebElement leadSource= driver.findElement(By.id("opp6"));
@@ -41,8 +54,10 @@ public class CreateOpportunities extends Basetest{
 		selectDropdownOption(leadSource,"Web");
 		Thread.sleep(2000);
 		WebElement PrimarycompaignEle= driver.findElement(By.id("opp17"));
+		clearElement(PrimarycompaignEle,"PrimarycompaignEle");
 		enterText(ProbabilityEle,"Internet","PrimarycompaignSource");
 		Thread.sleep(2000);
+		
 		WebElement SaveButton= driver.findElement(By.cssSelector("#topButtonRow > input:nth-child(1)"));
 		clickElement(SaveButton,"save");
 		Thread.sleep(2000);
@@ -50,7 +65,7 @@ public class CreateOpportunities extends Basetest{
         driver.switchTo().defaultContent();
         Thread.sleep(5000);
         //WebElement OpportunitiesTab1 = driver.findElement(By.cssSelector("#Opportunity_Tab > a:nth-child(1)"));
-		//clickElement(OpportunitiesTab1,"Opportunities Tab");
+		clickElement(OpportunitiesTab,"Opportunities Tab");
 		WebElement OppPipeLineLink= driver.findElement(By.linkText("Opportunity Pipeline"));
 		clickElement(OppPipeLineLink,"Pipelinelink");
 		Thread.sleep(2000);
